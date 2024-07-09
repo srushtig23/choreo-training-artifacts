@@ -10,6 +10,7 @@ import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import { Home } from "@mui/icons-material";
 import { Button, Icon } from "@mui/material";
 import { UserContext } from "../contexts/user";
+import Cookies from "js-cookie";
 
 function UserMenu() {
   const user = React.useContext(UserContext);
@@ -98,3 +99,14 @@ function Header() {
   );
 }
 export default Header;
+<MenuItem
+ onClick={() => {
+ sessionStorage.removeItem("userInfo");
+ window.location.href =
+ `/auth/logout?session_hint=${Cookies.get('session_hint')}`;
+ }}
+ >
+ <Button style={{ textTransform: "none" }}>
+ <Typography textAlign="center">Logout</Typography>
+ </Button>
+ </MenuItem>
